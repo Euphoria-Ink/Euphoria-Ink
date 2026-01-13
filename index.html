@@ -100,21 +100,14 @@
             text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
         }
         .hero h1 {
-            font-size: 5rem;
-            text-shadow: 0 0 30px rgba(0,0,0,0.8);
+            font-size: 5.8rem;
+            text-shadow: 0 0 40px rgba(0,0,0,0.9);
         }
-
-        .gradient-btn {
-            background: linear-gradient(to right, var(--grad-start), var(--grad-end));
-            border: none;
-            padding: 16px 60px;
-            font-size: 1.4rem;
-            transition: all 0.4s;
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
-        }
-        .gradient-btn:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.7);
+        .hero .artist-name {
+            font-size: 3rem;
+            color: #fff;
+            margin-top: 10px;
+            text-shadow: 0 0 20px rgba(0,0,0,0.7);
         }
 
         .scroll-down {
@@ -123,19 +116,89 @@
             left: 50%;
             transform: translateX(-50%);
             color: #fff;
-            font-size: 3rem;
+            font-size: 3.5rem;
             opacity: 0.8;
             animation: bounce 2s infinite;
             z-index: 3;
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-30px) translateX(-50%); }
+            40% { transform: translateY(-35px) translateX(-50%); }
             60% { transform: translateY(-15px) translateX(-50%); }
         }
 
-        section { padding: 140px 0; }
+        section { padding: 160px 0; position: relative; }
         #about, #booking { background: #0f0f0f; }
+
+        /* Teaser Banners - Perfectly Centered Content + Gradient Graphics */
+        .teaser {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        .teaser::before,
+        .teaser::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--grad-start) 0%, transparent 70%);
+            opacity: 0.08;
+            pointer-events: none;
+        }
+        .teaser::before {
+            top: -200px;
+            left: -200px;
+        }
+        .teaser::after {
+            bottom: -200px;
+            right: -200px;
+            background: radial-gradient(circle, var(--grad-end) 0%, transparent 70%);
+        }
+        .teaser .extra-ink {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--grad-start) 10%, transparent 60%);
+            opacity: 0.06;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 60% 40% 30% 70%;
+            animation: float-ink 20s infinite ease-in-out;
+        }
+        @keyframes float-ink {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(180deg); }
+        }
+        .teaser h3 {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        .teaser p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        .teaser .arrow {
+            font-size: 5rem;
+            animation: bounce 2s infinite;
+            opacity: 0.7;
+            position: relative;
+            z-index: 2;
+        }
 
         .gallery-item {
             overflow: hidden;
@@ -155,6 +218,19 @@
         }
         .gallery-item:hover .gallery-img {
             transform: scale(1.12);
+        }
+
+        .gradient-btn {
+            background: linear-gradient(to right, var(--grad-start), var(--grad-end));
+            border: none;
+            padding: 16px 60px;
+            font-size: 1.4rem;
+            transition: all 0.4s;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.5);
+        }
+        .gradient-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.7);
         }
 
         footer { background: #000; padding: 100px 0; }
@@ -199,17 +275,16 @@
     <section id="home" class="hero">
         <div id="particles-js"></div>
         <div class="hero-content">
-            <h1 data-aos="fade-down" data-aos-duration="1200">Farah Fahmy</h1>
-            <p data-aos="fade-up" data-aos-delay="400" class="lead fs-1 gradient-text">Euphoria Ink</p>
+            <h1 data-aos="fade-down" data-aos-duration="1200" class="gradient-text">Euphoria Ink</h1>
+            <p data-aos="fade-up" data-aos-delay="400" class="artist-name">Farah Fahmy</p>
             <p data-aos="fade-up" data-aos-delay="800" class="mb-5 fs-4">Custom Tattoo Artistry • Bold • Precise • Unique</p>
-            <a href="#booking" data-aos="fade-up" data-aos-delay="1200" class="btn gradient-btn text-white btn-lg">Book Appointment</a>
             <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
         </div>
     </section>
 
     <!-- About -->
     <section id="about">
-        <div class="container">
+        <div class="container position-relative">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
                     <img src="https://i.ibb.co/bM2X5DPQ/Whats-App-Image-2026-01-13-at-2-08-28-AM.jpg" class="img-fluid rounded shadow" alt="Farah Fahmy - Professional Tattoo Artist at Euphoria Ink">
@@ -219,11 +294,19 @@
                     <p>Farah Fahmy is a dedicated tattoo artist crafting bold, meaningful pieces that become part of your story.</p>
                     <p>At <strong>Euphoria Ink</strong> in October Gardens East Park Compound, every design is custom-created with precision, top hygiene standards, and a focus on your comfort.</p>
                     <p>From intricate details to powerful statements — your vision, brought to life.</p>
-                    <a href="#booking" class="btn gradient-btn text-white">Get Inked</a>
+                    <a href="#gallery" class="btn gradient-btn text-white">See Our Work</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Teaser Transition to Gallery -->
+    <div class="teaser" data-aos="fade-up">
+        <div class="extra-ink"></div>
+        <h3 class="gradient-text">Discover the Art</h3>
+        <p>Hand-crafted tattoos that push boundaries and tell stories. Scroll to explore the portfolio.</p>
+        <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+    </div>
 
     <!-- Gallery -->
     <section id="gallery">
@@ -275,6 +358,14 @@
             </div>
         </div>
     </section>
+
+    <!-- Teaser Transition to Booking -->
+    <div class="teaser" data-aos="fade-up">
+        <div class="extra-ink"></div>
+        <h3 class="gradient-text">Your Story, Inked</h3>
+        <p>Ready to turn your idea into permanent art? Let's make it happen.</p>
+        <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+    </div>
 
     <!-- Booking -->
     <section id="booking">
